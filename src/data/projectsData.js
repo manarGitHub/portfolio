@@ -1,15 +1,5 @@
 // src/data/projectsData.js
-import demo1 from '../assets/planifRECORDS/demo1.mp4';
-import demo2 from '../assets/planifRECORDS/demo2.mp4';
-import demo3 from '../assets/planifRECORDS/demo3.mp4';
-import demo4 from '../assets/planifRECORDS/demo4.mp4';
-import aws_f from '../assets/aws/awsF.mp4';
-import aws_b from '../assets/aws/awsB.mp4';
-import aws_gitlab from '../assets/aws/gitlab_aws.mp4';
 
-
-
-// Updated helper function that handles both images and videos
 const importAll = (r, useDefault = false) => {
   return r.keys().map(key => {
     const imported = r(key);
@@ -51,13 +41,13 @@ const quermes = importAll(
 // Import videos with .default handling
 const aws_dep = [
   {
-    url:aws_b,
+    url:"https://res.cloudinary.com/dnxplymvt/video/upload/v1769083279/awsB_iic2rr.mp4",
     title: 'Backend deploiment',
     description: 'The backend application is managed using PM2 to ensure process stability and automatic restarts',
     type: "local"
   },
   {
-    url: aws_f,
+    url: "https://res.cloudinary.com/dnxplymvt/video/upload/v1769083381/awsF_xygnys.mp4",
     title: 'Demo Part 2', 
     description: 'frontend service is configured to run persistently using systemd',
     type: "local"
@@ -66,37 +56,30 @@ const aws_dep = [
 ]
 const planifVideos = [
   {
-    url:demo1,
+    url:"https://res.cloudinary.com/dnxplymvt/video/upload/v1769082412/demo1_z1exm5.mp4",
     title: 'Demo Part 1',
     description: 'Authentication & User Management',
     type: "local"
   },
   {
-    url: demo2,
+    url: "https://res.cloudinary.com/dnxplymvt/video/upload/v1769083023/demo2_vz9ybi.mp4",
     title: 'Demo Part 2', 
     description: 'Quotation Module (DEVIS)',
     type: "local"
   },
   {
-    url: demo3,
+    url: "https://res.cloudinary.com/dnxplymvt/video/upload/v1769082631/demo3_ytv0dh.mp4",
     title: 'Demo Part 3',
     description: 'Planning & Scheduling',
     type: "local"
   },
   {
-    url: demo4,
+    url: "https://res.cloudinary.com/dnxplymvt/video/upload/v1769083115/demo4_zo6hjq.mp4",
     title: 'Demo Part 4',
     description: 'Analysis & Monitoring',
     type: "local"
   }
 ];
-
-// Import actia videos properly
-const actiaVideosContext = require.context('../assets/actia', false, /\.mp4$/);
-const actiaVideos = actiaVideosContext.keys().map(key => {
-  const importedModule = actiaVideosContext(key);
-  return importedModule.default || importedModule;
-});
 
 // Individual project objects
 export const projects = [
@@ -122,27 +105,27 @@ export const projects = [
     timeline: "6 months",
     year: "2025"
   },
-  {
+   {
     id: 2,
-    title: "Doctors app",
-    subtitle: "React Native medical consultations application",
-    category: "mobile",
-    image: "../assets/medvis_image.png",
-    description: "Design of an application for real-time access to online medical consultations",
-    technologies: ["React Native", "NodeJS", "JavaScript", "Trello", "Stack", "Git"],
-    github: "https://github.com/manarGitHub/medvision_app.git",
-    mobileScreenshots: medvisionImages,
+    title: "MERN Stack Admin Panel",
+    subtitle: "Modern responsive administration site design",
+    category: "web",
+    image: "../assets/admin.jpeg",
+    description: "A web application based on modern technologies that performs administrator needs analysis using a tailored software architecture, enabling deployment on different infrastructures via Docker with guaranteed security.",
+    technologies: ["React", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Git", "Docker", "Redux", "Postman"],
+    github: "https://github.com/manarGitHub/fullstack-admin.git",
+    screenshots: admin_web,
+
     features: [
-      "User & doctor login",
-      "Health stories feed",
-      "Video call integration",
-      "Chat functionality",
-      "E-prescription system",
-      "Task checklist"
+      "Reporting and Analysis System",
+      "Adapted software architecture",
+      "Data security guarantee",
+      "Deployment on different infrastructures",
+      "Performance Optimized"
     ],
-    role: "Mobile Developer",
-    timeline: "1 month",
-    year: "2025"
+    role: "Fullstack Developer",
+    timeline: "4 months",
+    year: "2024"
   },
   {
     id: 3,
@@ -166,28 +149,56 @@ export const projects = [
   },
   {
     id: 4,
-    title: "MERN Stack Admin Panel",
-    subtitle: "Modern responsive administration site design",
-    category: "web",
-    image: "../assets/admin.jpeg",
-    description: "A web application based on modern technologies that performs administrator needs analysis using a tailored software architecture, enabling deployment on different infrastructures via Docker with guaranteed security.",
-    technologies: ["React", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Git", "Docker", "Redux", "Postman"],
-    github: "https://github.com/manarGitHub/fullstack-admin.git",
-    screenshots: admin_web,
-
+    title: "Doctors app",
+    subtitle: "React Native medical consultations application",
+    category: "mobile",
+    image: "../assets/medvis_image.png",
+    description: "Design of an application for real-time access to online medical consultations",
+    technologies: ["React Native", "NodeJS", "JavaScript", "Trello", "Stack", "Git"],
+    github: "https://github.com/manarGitHub/medvision_app.git",
+    mobileScreenshots: medvisionImages,
     features: [
-      "Reporting and Analysis System",
-      "Adapted software architecture",
-      "Data security guarantee",
-      "Deployment on different infrastructures",
-      "Performance Optimized"
+      "User & doctor login",
+      "Health stories feed",
+      "Video call integration",
+      "Chat functionality",
+      "E-prescription system",
+      "Task checklist"
     ],
-    role: "Fullstack Developer",
-    timeline: "4 months",
+    role: "Mobile Developer",
+    timeline: "1 month",
+    year: "2025"
+  },
+   {
+    id: 5,
+    title: "DevOps Pipeline Project",
+    subtitle: "Automation of build, test, and deployment processes using CI/CD pipelines",
+    category: "devops",
+    image: "../assets/actia_cicd.PNG",
+    description: "Design and implementation of CI/CD pipelines with GitLab CI for automated software delivery.",
+    technologies: ["DevOps", "Docker", "Git", "Pipenv", "Pip", "Automation", "GitLab CI/CD", "Python"],
+    github: "https://github.com/manarGitHub/sample-ci-python.git",
+    videoDemos:  [  
+      {
+        url: "https://res.cloudinary.com/dnxplymvt/video/upload/v1769085829/Pipelines_vjo5eg.mp4",
+        title: "Pipeline Demo",
+        description: "GitLab CI/CD demonstration"
+        
+      }
+    ],
+    features: [
+      "Python virtual environment management",
+      "Containerization with Docker",
+      "Version management with Git",
+      "Automation of build, test, and deployment processes",
+      "Design and implementation of CI/CD pipelines with GitLab CI"
+    ],
+    role: "DevOps Engineer",
+    timeline: "2 months",
     year: "2024"
   },
   {
-    id: 5,
+    id: 6,
     title: "Mobile Control App",
     subtitle: "Mobile app for machine control using the MQTT protocol",
     category: "mobile",
@@ -204,32 +215,6 @@ export const projects = [
       "Historical data recording and viewing"
     ],
     role: "Mobile Developer",
-    timeline: "2 months",
-    year: "2024"
-  },
-  {
-    id: 6,
-    title: "DevOps Pipeline Project",
-    subtitle: "Automation of build, test, and deployment processes using CI/CD pipelines",
-    category: "devops",
-    image: "../assets/actia_cicd.PNG",
-    description: "Design and implementation of CI/CD pipelines with GitLab CI for automated software delivery.",
-    technologies: ["DevOps", "Docker", "Git", "Pipenv", "Pip", "Automation", "GitLab CI/CD", "Python"],
-    github: "https://github.com/manarGitHub/sample-ci-python.git",
-    videoDemos: actiaVideos.map((videoUrl, index) => ({
-      url: videoUrl,
-      title: `Pipeline Demo ${index + 1}`,
-      description: `GitLab CI/CD demonstration`,
-      type: "local"
-    })),
-    features: [
-      "Python virtual environment management",
-      "Containerization with Docker",
-      "Version management with Git",
-      "Automation of build, test, and deployment processes",
-      "Design and implementation of CI/CD pipelines with GitLab CI"
-    ],
-    role: "DevOps Engineer",
     timeline: "2 months",
     year: "2024"
   },
@@ -327,7 +312,7 @@ export const projects = [
     technologies: ["Aws", "GitLab CI", "SNS", "Lambda", "CloudWatch", "S3", "ECS", "EC2","Boto3","CloudFormation"],
     videoDemos: [  // Wrap single video in array
       {
-        url: aws_gitlab,
+        url: "https://res.cloudinary.com/dnxplymvt/video/upload/v1769083454/gitlab_aws_xvjufl.mp4",
         title: "AWS with GitLab CI Demo",
         description: "Demonstration of dynamic environment management with AWS and GitLab CI/CD",
         type: "local"
@@ -343,6 +328,34 @@ export const projects = [
     role: "DevOps Engineer",
     timeline: "1 months",
     year: "2025"
+  },
+  {
+    id: 12,
+    title: "Docker containers ",
+    subtitle: "Docker-based MERN deployment project",
+    category: "devops",
+    image: "../assets/docker.png",
+    description: "This project focuses on the deployment of a MERN web application (MongoDB, Express.js, React, Node.js) using a containerized architecture based on Docker. The application is deployed using four separate Docker containers, each responsible for a specific service to ensure modularity, scalability, and ease of maintenance.The architecture includes a container for the frontend (React), a container for the backend (Node.js / Express), a container for the MongoDB database, and a dedicated Nginx container acting as the entry point of the system. Nginx functions as a reverse proxy, receiving incoming user requests, routing them to the appropriate frontend or backend containers, and returning the corresponding responses to the clients.This containerized approach isolates services, simplifies deployment, and allows the application to be easily deployed, scaled, or migrated across different environments.",
+    technologies: ["Docker", "MERN Stack", "Microservices", "Containerization", "Nginx"],
+    videoDemos: [  
+      {
+        url: "https://res.cloudinary.com/dnxplymvt/video/upload/v1769083568/M%C3%A9dia1_nszl5z.mp4",
+        title: "Docker-based MERN deployment Demo",
+        description: "Demonstration of deploying our application using four separate Docker containers"
+        
+      }
+    ],
+    features: [
+      "Microservices-Oriented Containerization",
+      "Nginx Reverse Proxy",
+      "Scalable & Portable Deployment",
+      "Secure Inter-Container Communication",
+      "MongoDB data persistence using Docker volumes",
+      "Fast deployment and easy service management"
+    ],
+    role: "DevOps Engineer",
+    timeline: "1 months",
+    year: "2024"
   },
 ];
 
