@@ -334,7 +334,7 @@ export const projects = [
     title: "Docker containers ",
     subtitle: "Docker-based MERN deployment project",
     category: "devops",
-    image: "../assets/docker.png",
+    image: "../assets/d.jpg",
     description: "This project focuses on the deployment of a MERN web application (MongoDB, Express.js, React, Node.js) using a containerized architecture based on Docker. The application is deployed using four separate Docker containers, each responsible for a specific service to ensure modularity, scalability, and ease of maintenance.The architecture includes a container for the frontend (React), a container for the backend (Node.js / Express), a container for the MongoDB database, and a dedicated Nginx container acting as the entry point of the system. Nginx functions as a reverse proxy, receiving incoming user requests, routing them to the appropriate frontend or backend containers, and returning the corresponding responses to the clients.This containerized approach isolates services, simplifies deployment, and allows the application to be easily deployed, scaled, or migrated across different environments.",
     technologies: ["Docker", "MERN Stack", "Microservices", "Containerization", "Nginx"],
     videoDemos: [  
