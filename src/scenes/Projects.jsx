@@ -1,10 +1,9 @@
 // src/components/Projects.jsx
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import LineGradient from "../components/LineGradient";
 import { motion } from "framer-motion";
 import ProjectModal from "../components/ProjectModal";
-// Import from data files
-import { projects, getProjectsByCategory, getProjectsCountByCategory } from "../data/projectsData";
+import {getProjectsByCategory, getProjectsCountByCategory } from "../data/projectsData";
 import { categories, categoryColors, activeCategoryColors } from "../data/categories";
 
 const container = {
@@ -24,7 +23,6 @@ const projectVariant = {
 const Project = ({ project, onClick }) => {
   const overlayStyles = `absolute h-full w-full opacity-0 hover:opacity-90 transition duration-500
     bg-grey z-30 flex flex-col justify-center items-center text-center p-16 text-deep-blue cursor-pointer`;
-  const projectTitle = project.title.split(" ").join("-").toLowerCase();
 
   return (
     <motion.div variants={projectVariant} className="relative group h-full min-h-[300px]" onClick={onClick}>

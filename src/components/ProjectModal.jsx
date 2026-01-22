@@ -1,5 +1,5 @@
 // src/components/ProjectModal.jsx
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect,useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   FaGithub, 
@@ -36,29 +36,33 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
   
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentMobileIndex, setCurrentMobileIndex] = useState(0);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  //const [setIsVideoPlaying] = useState(false);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
   const videoRef = useRef(null);
   const modalRef = useRef(null);
 
   // Determine available media tabs
-  const mediaTabs = [];
+  const mediaTabs = useMemo(() => {
+  const tabs = [];
   
   if (project) {
     if (project.screenshots && project.screenshots.length > 0) {
-      mediaTabs.push({ id: "web", label: "Web Screenshots", icon: <FaDesktop /> });
+      tabs.push({ id: "web", label: "Web Screenshots", icon: <FaDesktop /> });
     }
     
     if (project.mobileScreenshots && project.mobileScreenshots.length > 0) {
-      mediaTabs.push({ id: "mobile", label: "Mobile Screens", icon: <FaMobileAlt /> });
+      tabs.push({ id: "mobile", label: "Mobile Screens", icon: <FaMobileAlt /> });
     }
     
     // Support both single videoDemo and multiple videoDemos
     if (project.videoDemo || (project.videoDemos && project.videoDemos.length > 0)) {
-      mediaTabs.push({ id: "video", label: "Video Demo", icon: <FaPlay /> });
+      tabs.push({ id: "video", label: "Video Demo", icon: <FaPlay /> });
     }
   }
+  
+  return tabs;
+}, [project]); 
 
   // Reset indices when project changes or modal opens
   useEffect(() => {
@@ -66,7 +70,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
       setCurrentImageIndex(0);
       setCurrentMobileIndex(0);
       setCurrentVideoIndex(0);
-      setIsVideoPlaying(false);
+      //setIsVideoPlaying(false);
       
       // Ensure active tab is valid
       if (mediaTabs.length > 0) {
@@ -76,7 +80,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
         }
       }
     }
-  }, [project, isOpen, activeMediaTab]);
+  }, [project, isOpen, activeMediaTab,mediaTabs]);
 
   // Navigation functions for web screenshots
   const nextWebImage = (e) => {
@@ -383,7 +387,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                             onClick={(e) => {
                               e.stopPropagation();
                               setCurrentVideoIndex(index);
-                              setIsVideoPlaying(false);
+                              
                             }}
                             className={`flex-shrink-0 w-24 h-16 sm:w-32 sm:h-20 overflow-hidden rounded-lg border-2 transition-all relative ${
                               currentVideoIndex === index 
